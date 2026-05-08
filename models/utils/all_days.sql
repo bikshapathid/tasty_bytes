@@ -21,6 +21,9 @@ select date_day as date,
        dayofmonth(date_day) as day_of_mon,
        dayofweek(date_day) as day_of_week,
        weekofyear(date_day) as week_of_year,
-       dayofyear(date_day) as day_of_year
-
+       dayofyear(date_day) as day_of_year,
+       case
+           when month(date_day) >= 10 then year(date_day) + 1
+           else year(date_day)
+       end as fiscal_year
   from date_spine
